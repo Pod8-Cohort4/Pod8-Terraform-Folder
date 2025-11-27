@@ -29,7 +29,7 @@ data "aws_eks_cluster_auth" "cluster" {
 # NGINX INGRESS HELM RELEASE
 # =========================================
 resource "helm_release" "nginx_ingress" {
-  name             = "nginx-ingress"
+  name             = "nginx-ingress-${replace(timestamp(), "[:T]", "-")}"
   repository       = "https://kubernetes.github.io/ingress-nginx"
   chart            = "ingress-nginx"
   version          = "4.12.0"
@@ -39,9 +39,10 @@ resource "helm_release" "nginx_ingress" {
 
   depends_on = [aws_eks_node_group.eks_node_group]
 
-  timeout = 1200  # 20 minutes
-  atomic  = false # prevent rollback; Terraform will manage it
+  timeout = 1200
+  atomic  = false
 }
+
 
 
 # =========================================
