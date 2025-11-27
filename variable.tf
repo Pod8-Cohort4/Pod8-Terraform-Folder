@@ -107,7 +107,7 @@ variable "namecheap_username" {
 variable "namecheap_client_ip" {
   description = "Client IP for Namecheap API access"
   type        = string
-  default     = "3.83.236.15" # Replace with your actual client IP
+  default     = "3.83.236.157" # Replace with your actual client IP
 }
 
 #===========
@@ -151,7 +151,7 @@ variable "db_name" {
 variable "cluster_name" {
   description = "The name of the EKS cluster"
   type        = string
-  default     = "eks-cluster"
+  default     = "production-eks-cluster"
 }
 
 variable "repository_name" {
